@@ -35,10 +35,10 @@ print(confusion_matrix_model_df)
 ```
 
 Output:
-![confusion_matrix]()
+![confusion_matrix](https://github.com/omidk414/credit-risk-classification/blob/main/Credit_Risk/images/confusion_matrix.png)
 
 ## Model Performance
-![model_performance]()
+![model_performance](https://github.com/omidk414/credit-risk-classification/blob/main/Credit_Risk/images/model_performance.png)
 
 ## Results Summary
 
