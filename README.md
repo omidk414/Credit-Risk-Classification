@@ -1,27 +1,54 @@
-# credit-risk-classification
+# Loan Risk Prediction Model
 
-## Overview of the Analysis
+## Overview
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+The purpose of this analysis was to develop and evaluate a machine learning model for predicting loan risk. The goal was to create a tool that could accurately classify loans as either healthy or high-risk, thereby assisting financial institutions in making informed lending decisions and managing their risk exposure.
+This project implements a supervised machine learning model to predict loan risk using logistic regression. The model classifies loans as either healthy (0) or high-risk (1) based on various financial features.
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any other algorithms).
+## Table of Contents
+1. [Features](#features)
+2. [Example Code](#example-code)
+3. [Model Performance](#model-performance)
+4. [Results Summary](#results-summary)
+5. [Analysis](#analysis)
 
-## Results
+## Features
 
-Using bulleted lists, describe the accuracy scores and the precision and recall scores of all machine learning models.
+- Utilizes logistic regression for binary classification
+- Handles imbalanced dataset of loan applications
+- Provides comprehensive performance metrics
+- Includes confusion matrix visualization
 
-* Machine Learning Model 1:
-    * Description of Model 1 Accuracy, Precision, and Recall scores.
+## Example Code
 
-## Summary
+```python
+# Generate a confusion matrix for the model
+# A value of 0 in the "loan_status" column means that the loan is healthy.
+# A value of 1 means that the loan has a high risk of defaulting.
+confusion_matrix_model = confusion_matrix(y_test, predictions)
+confusion_matrix_model_df = pd.DataFrame(
+    confusion_matrix_model,
+    index=['Actual Healthy (0)', 'Actual High-Risk (1)'],
+    columns=['Predicted Healthy (0)', 'Predicted High-Risk (1)']
+)
+print(confusion_matrix_model_df)
+```
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
+Output:
+![confusion_matrix]()
 
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+## Model Performance
+![model_performance]()
 
-If you do not recommend any of the models, please justify your reasoning.
+## Results Summary
+
+The logistic regression model demonstrates exceptional performance in predicting loan risk:
+
+- The overall accuracy of 0.99 indicates that the model correctly classifies 99% of all loans.
+- For healthy loans, the model achieves perfect precision (1.00) and near-perfect recall (0.99).
+- For high-risk loans, the model maintains high recall (0.94) while achieving good precision (0.84).
+- The balanced F1-scores for both classes (1.00 for healthy loans and 0.89 for high-risk loans) demonstrate the model's ability to handle the class imbalance effectively.
+
+## Analysis
+
+Based on the performance, I strongly recommend the use of this logistic regression model for loan risk prediction. The model's high accuracy, precision, and recall make it a reliable tool for risk management in lending decisions. The ability to maintain high recall for high-risk loans (0.94) is significant, as it minimizes the chance of approving potentially defaulting loans. The model's performance across all metrics, especially in the significant class imbalance from the dataset, further proves its reliability and effectiveness in real-world applications.
